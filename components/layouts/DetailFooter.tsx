@@ -75,8 +75,8 @@ export default function DetailFooter({ title, description, thumbnail }: Props) {
           description: description,
           imageUrl: thumbnail,
           link: {
-            mobileWebUrl: `https://readme.life/noveldetail/${novelId}`,
-            webUrl: `https://readme.life/noveldetail/${novelId}`,
+            mobileWebUrl: `http://15.165.198.145:3000/noveldetail/${novelId}`,
+            webUrl: `http://15.165.198.145:3000/noveldetail/${novelId}`,
           },
         },
       });
