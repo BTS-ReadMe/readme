@@ -24,3 +24,9 @@ export function useSendViewerPositionMutation() {
 
   return sendViewerPosition;
 }
+
+//메인 카테고리 메뉴 데이터
+export async function novelMenusFetch(){
+  const response = await axios.get(`/novels-service/v1/main-category`);
+  return response.data;
+};

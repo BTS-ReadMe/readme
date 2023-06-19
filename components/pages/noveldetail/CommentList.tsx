@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 import Comment from "@/components/ui/Comment";
 import style from "@/components/pages/noveldetail/CommentList.module.css";
 import CommentsCheck from "./CommentsCheck";
-
+import { novelcommentFetch } from "@/pages/api/utils-service";
 interface CommentType {
   id: number;
   writer: string;
@@ -24,31 +24,24 @@ interface CommentType {
 
 export default function CommentList() {
   const router = useRouter();
-  const novelId = router.query.novelId;
+  const novelId  = Number(router.query.novelId);
   const [cookies] = useCookies(["uuid"]);
   const queryClient = useQueryClient();
-
-  const fetchnovelcomment = async ({ pageParam = 0 }) => {
-    const response = await axios.get(
-      `/utils-service/v1/comments/novels/${novelId}?page=${pageParam}`
-    );
-    return response.data;
-  };
   const { ref, inView } = useInView({
     threshold: 0,
   });
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, status } =
-    useInfiniteQuery(["comments", novelId], fetchnovelcomment, {
-      getNextPageParam: (lastPage) => {
-        const currentPage = lastPage?.data?.pagination?.page ?? 0;
-        const totalPages = lastPage?.data?.pagination?.totalPage ?? 0;
-        if (currentPage < totalPages - 1) {
-          return currentPage + 1;
-        }
-        return null;
-      },
-    });
+  useInfiniteQuery(["comments", novelId], novelcommentFetch, {
+    getNextPageParam: (lastPage) => {
+      const currentPage = lastPage?.data?.pagination?.page ?? 0;
+      const totalPages = lastPage?.data?.pagination?.totalPage ?? 0;
+      if (currentPage < totalPages - 1) {
+        return currentPage + 1;
+      }
+      return null;
+    },
+  });
 
   useEffect(() => {
     if (inView && hasNextPage && !isFetchingNextPage) {

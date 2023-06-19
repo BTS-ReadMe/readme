@@ -2,31 +2,24 @@ import React from "react";
 import { useRouter } from "next/router";
 import { useQuery } from "react-query";
 import Head from "next/head";
-import axios from "@/configs/axiosConfig";
 import NovelDatailHeader from "@/components/pages/noveldetail/NovelDatailHeader";
 import NovelDetailInfo from "@/components/pages/noveldetail/NovelDetailInfo";
 import NovelDetailMenu from "@/components/pages/noveldetail/NovelDetailMenu";
 import DetailFooter from "@/components/layouts/DetailFooter";
 import NovelTages from "@/components/pages/noveldetail/NovelTages";
-
+import { novelbyIdFetch } from "../api/sections-service";
 export default function NovelDetail() {
   const router = useRouter();
   const novelId = Number(router.query.novelId);
-  const novelbyIdData = async () => {
-    const response = await axios.get(
-      `/sections-service/v1/cards/novels/${novelId}`
-    );
-    return response.data;
-  };
+
   const { data, error, isLoading } = useQuery(
     ["novelbyIdData", novelId],
-    novelbyIdData,
+    novelbyIdFetch,
     {
       enabled: !!novelId,
     }
   );
   const novelbyIdDataResult = data?.data;
-
 
   return (
     <>
