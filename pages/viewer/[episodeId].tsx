@@ -41,7 +41,7 @@ export default function ViewerPage() {
     closeEventSource();
 
     const newEventSource = new EventSource(
-      `https://api.readme.life/novels-service/v1/episodes/getEmitter/${episodeId}`
+      `/novels-service/v1/episodes/getEmitter/${episodeId}`
     );
 
     newEventSource.onopen = () => {

@@ -22,7 +22,7 @@ export default function NovelUpload(props: {
     try {
       //
       const imageRes = await axios.post(
-        `https://api.readme.life/novels-service/s3/file`,
+        `/novels-service/s3/file`,
         formData
       );
       const image_URL = imageRes.data;

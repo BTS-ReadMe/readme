@@ -42,7 +42,7 @@ export default function NovelForm() {
     if (!router.isReady) return;
 
     const getNovelData = async () => {
-      const res = await axios.get(`/novels-service/v1/admin/novels/${novelId}`);
+      const res = await axios.get(`http://15.165.198.145:8000/novels-service/v1/admin/novels/${novelId}`);
       setInputData({
         title: res.data.data.title,
         author: res.data.data.author,
@@ -64,7 +64,7 @@ export default function NovelForm() {
 
   const postHandle = () => {
     axios
-      .post(`/novels-service/v1/admin/novels`, {
+      .post(`http://15.165.198.145:8000/novels-service/v1/admin/novels`, {
         title: inputData.title,
         author: inputData.author,
         grade: inputData.grade,
@@ -88,7 +88,7 @@ export default function NovelForm() {
 
   const putHandle = () => {
     axios
-      .put(`/novels-service/v1/admin/novels/${novelId}`, {
+      .put(`http://15.165.198.145:8000/novels-service/v1/admin/novels/${novelId}`, {
         title: inputData.title,
         author: inputData.author,
         grade: inputData.grade,

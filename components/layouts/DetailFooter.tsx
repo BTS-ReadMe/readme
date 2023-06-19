@@ -75,8 +75,8 @@ export default function DetailFooter({ title, description, thumbnail }: Props) {
           description: description,
           imageUrl: thumbnail,
           link: {
-            mobileWebUrl: `http://15.165.198.145:3000/noveldetail/${novelId}`,
-            webUrl: `http://15.165.198.145:3000/noveldetail/${novelId}`,
+            mobileWebUrl: `http://15.165.198.145/noveldetail/${novelId}`,
+            webUrl: `http://15.165.198.145/noveldetail/${novelId}`,
           },
         },
       });
