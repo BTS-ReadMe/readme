@@ -5,7 +5,7 @@ import CommentList from "./CommentList";
 import React, { useEffect, useState } from "react";
 import { useInfiniteQuery } from "react-query";
 import { useInView } from "react-intersection-observer";
-import axios from "@/configs/axiosConfig";
+import { episodesFetch } from "@/pages/api/sections-service";
 
 export const SORT_TYPES = {
   RECENT: "최신순",
@@ -31,28 +31,30 @@ export default function NovelDetailMenu(props: {
     setSort(newSort);
   };
 
-  const fetchEpisodes = async ({ pageParam = 0 }) => {
-    const response = await axios.get(
-      `/sections-service/v1/cards/episodes/${props.novelId}?pagination=${pageParam}&sort=${sort}`
-    );
-    return response.data;
-  };
   const { ref, inView } = useInView({
     threshold: 0,
   });
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, status } =
-    useInfiniteQuery(["episodes", props.novelId, sort], fetchEpisodes, {
-      getNextPageParam: (lastPage) => {
-        const currentPage = lastPage?.data?.page ?? 0;
-        const totalPages = lastPage?.data?.totalPages ?? 0;
-        if (currentPage < totalPages) {
-          return currentPage + 1;
-        }
-        return null;
-      },
-      keepPreviousData: true,
-    });
+    useInfiniteQuery(
+      ["episodes", props.novelId, sort],
+      ({ pageParam = 0, queryKey }) =>
+        episodesFetch({
+          pageParam,
+          queryKey: queryKey as [string, number, string],
+        }),
+      {
+        getNextPageParam: (lastPage) => {
+          const currentPage = lastPage?.data?.page ?? 0;
+          const totalPages = lastPage?.data?.totalPages ?? 0;
+          if (currentPage < totalPages) {
+            return currentPage + 1;
+          }
+          return null;
+        },
+        keepPreviousData: true,
+      }
+    );
 
   const [isSticky, setIsSticky] = useState(false);
 
@@ -111,7 +113,6 @@ export default function NovelDetailMenu(props: {
           <>
             <EpisodeInfo
               sort={sort}
-          
               onSortChange={handleSort}
               episodes={data.pages.flatMap(
                 (page) =>

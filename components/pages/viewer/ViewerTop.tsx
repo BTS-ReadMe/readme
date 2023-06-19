@@ -46,15 +46,12 @@ export default function ViewerTop({
       },
       {
         onSuccess: (data: any) => {
-
-          
           router.push(`/noveldetail/${novelId}`);
-
         },
       }
     );
-  }, [router, episodeId, sendViewerPosition, readAt, loginCheck]);
-
+  }, [router, episodeId, readAt, loginCheck]);
+  
   const handleButtonClick = useCallback(() => {
     if (!loginCheck) {
       return;
@@ -71,6 +68,7 @@ export default function ViewerTop({
       }
     );
   }, [loginCheck, readAt, episodeId, sendViewerPosition]);
+
 
   // 마이페이지,홈,뒤로가기
   const handleMypageClick = handleButtonClick;
