@@ -12,7 +12,6 @@
     - 김민경 : User 서비스, Search, Viewer 서비스, BFF 처리, Client Data 최적화
     - 이시현 : User Sign In/Up 플로우 처리, 충전/결제 기능, 관리자, 내서재, Profile 포함 운영 기능
 
-
 ## 기능
 |메인|소설|검색|
 |:-:|:-:|:-:|
@@ -27,7 +26,6 @@
 |:-:|:-:|:-:|:-:|
 |![image](https://github.com/BTS-ReadMe/readme/assets/113071800/97f6709b-cba9-4377-9b1c-f4e5cc552202)|![image](https://github.com/BTS-ReadMe/readme/assets/113071800/ed0d318c-1972-452d-be16-821a579b12a6)|![image](https://github.com/BTS-ReadMe/readme/assets/113071800/8c355628-6dd4-4684-8ae9-287f5508b49a)|![image](https://github.com/BTS-ReadMe/readme/assets/113071800/b1e80cc5-74f4-429c-b83a-a605f1459216)|
 
-
 ## 구현 패턴
 #### 코드의 안정성과 효율성을 위한 React Query 및 TypeScript 사용
 React Query를 활용하여 데이터 패칭, 캐싱, 에러 핸들링을 효율적으로 관리하였고, 사용자 자주 접하는 요소에 대해 캐싱을 적용하여 API 호출을 최적화하였습니다. 
@@ -39,15 +37,14 @@ SEO 최적화를 위해 이미지에 적절한 alt 태그를 부여하고, 페�
 소설을 클릭하고 이전 버튼을 눌렸을경우 스크롤을 기억하여 마지막 스크롤로 되돌아 갈 수 있게 구현하였습니다. 최소한의 동작으로 원하는 정보를 제공하고자합니다.
 사용자 경험 향상을 위해 다른 서비스 사이트를 벤치마킹하고, 사용자에게 선택의 폭을 주기 위해 Card/List 형식의 뷰를 제공합니다.
 
-## 설치 방법
 ## FrontEnd 개발 환경 설정
 Node.js의 버전은 v18.16.0입니다.
 ```sh
 설치 : npm install or yarn
 실행 : npm run devlocal or yarn devlocal
 ```
-디렉토리 구조
 
+## 디렉토리 구조
 Repo
 ```
 ├─components
@@ -90,9 +87,8 @@ Repo
 |USER|로그인한 유저|
 |GUEST|게스트|
 
-### Tech stack
-
-FrontEnt  
+## Tech stack
+Frontend  
 <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=HTML5&logoColor=white" />
 <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=CSS3&logoColor=white" />
 <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=JavaScript&logoColor=white" />
@@ -104,7 +100,6 @@ FrontEnt
 <img src="https://img.shields.io/badge/Next.js-000000?style=flat&logo=Next.js&logoColor=white" />
 <img src="https://img.shields.io/badge/Ant%20Design-0170FE?style=flat&logo=AntDesign&logoColor=white" />
 <img src="https://img.shields.io/badge/Axios-000000?style=flat&logo=Axios&logoColor=white" />
-
 
 Tool  
 <img src="https://img.shields.io/badge/IntelliJ IDEA-000000?style=flat&logo=IntelliJ IDEA&logoColor=white" />
@@ -121,16 +116,4 @@ Tool
 [travis-url]: https://travis-ci.org/dbader/node-datadog-metrics
 [wiki]: https://github.com/yourname/yourproject/wiki
 
-## Getting Started
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
