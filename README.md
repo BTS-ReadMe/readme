@@ -18,14 +18,14 @@
 |:-:|:-:|:-:|
 |<img src="https://github.com/BTS-ReadMe/.github/assets/110506500/48d5b681-c6b7-4471-aeb5-a19c10ff144f" width="200" height="500" alt="이미지">|<img src="https://github.com/BTS-ReadMe/.github/assets/110506500/ad986a26-091f-4db4-8382-25479707c984" width="200" height="500" alt="이미지">|<img src="https://github.com/BTS-ReadMe/.github/assets/110506500/9315179f-606c-4085-8be2-3f5731d59e3e" width="200" height="500" alt="이미지">
 
-|소설상세페이지 - 홈|에피소드|댓글|
-|:-:|:-:|:-:|
-|![image](https://github.com/BTS-ReadMe/readme/assets/113071800/137fc040-8ddb-42de-9107-296bf60a03e8)|![image](https://github.com/BTS-ReadMe/readme/assets/113071800/207cb9f5-6324-486c-a684-26b61c680bed)|![image](https://github.com/BTS-ReadMe/readme/assets/113071800/38e8458c-d84f-47a6-ae09-c0037959b2f9)|
+|소설상세페이지 - 홈|에피소드|댓글|연령제한(15세 미만일때)|
+|:-:|:-:|:-:|:-:|
+|![image](https://github.com/BTS-ReadMe/readme/assets/113071800/137fc040-8ddb-42de-9107-296bf60a03e8)|![image](https://github.com/BTS-ReadMe/readme/assets/113071800/207cb9f5-6324-486c-a684-26b61c680bed)|![image](https://github.com/BTS-ReadMe/readme/assets/113071800/38e8458c-d84f-47a6-ae09-c0037959b2f9)|![image](https://github.com/BTS-ReadMe/readme/assets/113071800/607bb0a4-b726-48e0-879b-65f874ec324d)
+
 
 |소설뷰어페이지 - 평점 등록/수정|댓글 등록|이전화/다음화 보기|이모지 추가|
 |:-:|:-:|:-:|:-:|
 |![image](https://github.com/BTS-ReadMe/readme/assets/113071800/97f6709b-cba9-4377-9b1c-f4e5cc552202)|![image](https://github.com/BTS-ReadMe/readme/assets/113071800/ed0d318c-1972-452d-be16-821a579b12a6)|![image](https://github.com/BTS-ReadMe/readme/assets/113071800/8c355628-6dd4-4684-8ae9-287f5508b49a)|![image](https://github.com/BTS-ReadMe/readme/assets/113071800/b1e80cc5-74f4-429c-b83a-a605f1459216)|
-|
 
 
 ## 구현 패턴
@@ -35,15 +35,54 @@ TypeScript를 도입하여 코드의 안정성을 높이고, 타입 안정성을
 #### SSR, CSR 적용과 SEO 최적화
 메인페이지, 소설 상세페이지, 조회 페이지에서 SSR(Server Side Rendering)을 적용하여 페이지 로딩 성능을 개선하였고 LightHouse를 이용한 성능 테스트 결과 50에서 78로 상승시켰습니다. 
 SEO 최적화를 위해 이미지에 적절한 alt 태그를 부여하고, 페이지 title과 description을 최적화하여 검색 엔진 최적화하여 검색 엔진 노출을 향상시켰습니다.
+#### 사용자 최적화 환경
+소설을 클릭하고 이전 버튼을 눌렸을경우 스크롤을 기억하여 마지막 스크롤로 되돌아 갈 수 있게 구현하였습니다. 최소한의 동작으로 원하는 정보를 제공하고자합니다.
+사용자 경험 향상을 위해 다른 서비스 사이트를 벤치마킹하고, 사용자에게 선택의 폭을 주기 위해 Card/List 형식의 뷰를 제공합니다.
 
 ## 설치 방법
 ## FrontEnd 개발 환경 설정
-
+Node.js의 버전은 v18.16.0입니다.
 ```sh
 설치 : npm install or yarn
 실행 : npm run devlocal or yarn devlocal
 ```
+디렉토리 구조
 
+Repo
+```
+├─components
+│  ├─layouts
+│  ├─pages
+│  │  ├─admin
+│  │  ├─library
+│  │  ├─main
+│  │  ├─mypage
+│  │  ├─novel
+│  │  ├─noveldetail
+│  │  ├─point
+│  │  ├─search
+│  │  └─viewer
+│  ├─ui
+│  └─widget
+├─data
+├─pages
+│  ├─admin
+│  ├─api
+│  ├─noveldetail
+│  └─viewer
+├─public
+│  └─assets
+│      └─images
+│          └─icons
+├─state
+├─styles
+│  └─common
+└─types
+   ├─admin
+   ├─service
+   └─user
+```
+    
 ## 페이지 접근 권한
 |권한|이름|
 |:-:|:-:|
