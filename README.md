@@ -55,6 +55,7 @@ Tool
 |:-:|:-:|:-:|:-:|
 |![image](https://github.com/BTS-ReadMe/readme/assets/113071800/97f6709b-cba9-4377-9b1c-f4e5cc552202)|![image](https://github.com/BTS-ReadMe/readme/assets/113071800/ed0d318c-1972-452d-be16-821a579b12a6)|![image](https://github.com/BTS-ReadMe/readme/assets/113071800/8c355628-6dd4-4684-8ae9-287f5508b49a)|![image](https://github.com/BTS-ReadMe/readme/assets/113071800/b1e80cc5-74f4-429c-b83a-a605f1459216)|
 
+
 ## 구현 패턴
 #### 코드의 안정성과 효율성을 위한 React Query 및 TypeScript 사용
 React Query를 활용하여 데이터 패칭, 캐싱, 에러 핸들링을 효율적으로 관리하였고, 사용자 자주 접하는 요소에 대해 캐싱을 적용하여 API 호출을 최적화하였습니다. 
