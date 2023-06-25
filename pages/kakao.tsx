@@ -16,7 +16,7 @@ export default function Kakao() {
     if (code !== undefined) {
       axios
         .post(
-          `https://api.readme.life/users-service/v1/user/login?code=${code}`
+          `/users-service/v1/user/login?code=${code}`
         )
         .then((res) => {
           localStorage.setItem("nickname", res.data.data.nickname);

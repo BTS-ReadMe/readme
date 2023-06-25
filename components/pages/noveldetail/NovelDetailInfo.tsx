@@ -17,6 +17,8 @@ export default function NovelDetailInfo(props: {
           alt="thumbnail Img"
           width={1000}
           height={1000}
+          placeholder="blur"
+          blurDataURL="data:image/gif;base64,..."
         />
       </div>
       <div className={style.detailnovellikes}>

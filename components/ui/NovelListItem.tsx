@@ -35,7 +35,9 @@ export default function NovelListItem({
     if (grade === 0) {
       localStorage.setItem("scrollPosition", window.pageYOffset.toString());
       localStorage.setItem("previousUrl", router.asPath);
-      router.push(`/noveldetail/${novelData.novelId}`, undefined, { scroll: false });
+      router.push(`/noveldetail/${novelData.novelId}`, undefined, {
+        scroll: false,
+      });
       return;
     }
 
@@ -69,7 +71,9 @@ export default function NovelListItem({
 
     localStorage.setItem("scrollPosition", window.pageYOffset.toString());
     localStorage.setItem("previousUrl", router.asPath);
-    router.push(`/noveldetail/${novelData.novelId}`, undefined, { scroll: false });
+    router.push(`/noveldetail/${novelData.novelId}`, undefined, {
+      scroll: false,
+    });
   };
 
   return (
@@ -80,8 +84,11 @@ export default function NovelListItem({
             <Image
               src={novelData.thumbnail}
               alt="Novel Image"
-              width={100}
-              height={100}
+              width={96}
+              height={96}
+              priority
+              placeholder="blur"
+              blurDataURL="data:image/gif;base64,..."
             />
           </div>
           {novelData.newChecking && (

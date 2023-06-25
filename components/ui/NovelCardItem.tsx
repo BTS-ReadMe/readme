@@ -97,9 +97,11 @@ export default function NovelCardItem({
           <Image
             src={thumbnail}
             alt={"thumbnailImg"}
-            width={500}
-            height={500}
+            width={384}
+            height={384}
             priority
+            placeholder="blur"
+            blurDataURL="data:image/gif;base64,..."
           />
         </div>
         {newChecking && (

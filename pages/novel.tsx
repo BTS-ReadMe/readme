@@ -1,5 +1,4 @@
 import { useRouter } from "next/router";
-import axios from "@/configs/axiosConfig";
 import { GetServerSideProps } from "next";
 import Head from 'next/head';
 import React, { useEffect } from "react";
@@ -15,23 +14,9 @@ import {
 import AllNovelCardSection from "@/components/pages/novel/AllNovelCardSection";
 import AllNovelMenu from "@/components/pages/novel/AllNovelMenu";
 import Footer from "@/components/layouts/Footer";
-
+import { novelFetch } from "./api/sections-service"
+import { novelMenusFetch } from "./api/novel-service";
 type ViewerType = "card" | "list";
-const novelMenus = async () => {
-  const response = await axios.get(`/novels-service/v1/main-category`);
-  return response.data;
-};
-
-const fetchnovelDatas = async (
-  category: string,
-  subCategory: string,
-  pageParam = 0
-) => {
-  const response = await axios.get(
-    `/sections-service/v1/cards/novels?pagination=${pageParam}&category=${category}&subCategory=${subCategory}`
-  );
-  return response.data;
-};
 
 export default function Novel() {
   const router = useRouter();
@@ -58,7 +43,7 @@ export default function Novel() {
     queryClientRef.current = new QueryClient();
   }
 
-  const novelMenusQuery = useQuery(["novelMenus"], novelMenus, {
+  const novelMenusQuery = useQuery(["novelMenus"], novelMenusFetch, {
     cacheTime: 10 * 60 * 1000,
     staleTime: 5 * 60 * 1000,
     refetchOnWindowFocus: false,
@@ -71,7 +56,7 @@ export default function Novel() {
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, status } =
     useInfiniteQuery(
       ["novelDatas", category, subCategory],
-      ({ pageParam = 0 }) => fetchnovelDatas(category, subCategory, pageParam),
+      ({ pageParam = 0 }) => novelFetch(category, subCategory, pageParam),
       {
         getNextPageParam: (lastPage) => {
           const currentPage = lastPage?.data?.page ?? 0;
@@ -124,10 +109,10 @@ export default function Novel() {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { category, subCategory } = context.query;
   const queryClient = new QueryClient();
-  await queryClient.prefetchQuery(["novelMenus"], novelMenus);
+  await queryClient.prefetchQuery(["novelMenus"], novelMenusFetch);
   await queryClient.prefetchQuery(
     ["category", category, "subCategory", subCategory],
-    () => fetchnovelDatas(String(category), String(subCategory))
+    () => novelFetch(String(category), String(subCategory))
   );
 
   const dehydratedState = dehydrate(queryClient);

@@ -41,7 +41,7 @@ export default function ViewerPage() {
     closeEventSource();
 
     const newEventSource = new EventSource(
-      `https://api.readme.life/novels-service/v1/episodes/getEmitter/${episodeId}`
+      `/novels-service/v1/episodes/getEmitter/${episodeId}`
     );
 
     newEventSource.onopen = () => {
@@ -70,7 +70,7 @@ export default function ViewerPage() {
           "emojiData",
           episodeId,
         ]);
-        const oldData = Array.isArray(queryData) ? [...queryData] : []; 
+        const oldData = Array.isArray(queryData) ? [...queryData] : [];
 
         const existingDataIndex = oldData.findIndex(
           (item) =>
@@ -115,24 +115,21 @@ export default function ViewerPage() {
   );
   const episodeDetailDataResult = data?.data;
 
-  const {
-    data: emojiQuery,
-  } = useQuery(["emojiData", episodeId], () => emojiFetch(episodeId), {
-    enabled: !!episodeId,
-  });
+  const { data: emojiQuery } = useQuery(
+    ["emojiData", episodeId],
+    () => emojiFetch(episodeId),
+    {
+      enabled: !!episodeId,
+    }
+  );
 
   return (
     <>
-     <Head>
-        
-          <title>{`${episodeDetailDataResult?.title} | ReadMe`}</title>
-       
-        <meta
-          name="description"
-          content={episodeDetailDataResult?.content}
-        />
+      <Head>
+        <title>{`${episodeDetailDataResult?.title} | ReadMe`}</title>
+        <meta name="description" content={episodeDetailDataResult?.content} />
       </Head>
-      {episodeDetailDataResult  && (
+      {episodeDetailDataResult && (
         <>
           <ViewerTop
             novelId={episodeDetailDataResult.novelId}

@@ -3,10 +3,9 @@ import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Form, Input } from "antd";
 import style from "@/components/pages/admin/Login.module.css";
 import Image from "next/image";
-import { useRouter } from "next/router";
-import axios from "axios";
-import Config from "@/configs/config.export";
 import { useCookies } from "react-cookie";
+import { useRouter } from "next/router";
+import axios from "@/configs/axiosConfig";
 
 export default function Login() {
   const router = useRouter();
